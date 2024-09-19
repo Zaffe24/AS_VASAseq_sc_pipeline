@@ -17,7 +17,13 @@ Firstly, raw FASTQs are demultiplexed into single-cell files, then reads 3'-end 
 Create a conda environment named `pre_process` using as template `pre_process.yaml`:
 
 ```shell
-conda env create --file=pre_process.yaml --prefix=path/to/conda/pre_process
+conda env create -f envs/pre_process.yaml -p path/to/conda/pre_process
+```
+then move to your working directory and clone this repository:
+
+```shell
+cd path/to/working_directory
+git clone
 ```
 
 ## II. Transcriptome extension
