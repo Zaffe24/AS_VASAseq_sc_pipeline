@@ -11,7 +11,7 @@ Patient-derived xenograft (PDX) samples from pediatric T-cell acute lymphoblasti
 
 ## I. Pre-processing
 The workflow is designed to be run **individually** for each patient/sample via a customized `Snakemake` pipeline.
-Firstly, raw FASTQs are demultiplexed into single-cell files, then reads 3'-end are trimmed as per the original [VASA-seq workflow](https://github.com/hemberg-lab/VASAseq_2022/tree/main/I_Gene_expression/a_Mapping). The depletion of ribosomal RNA is performed by mapping reads to a reference FASTA file containing both mouse and human rRNA genes \(`XXXX.fasta`\). The last step consists in discarding mouse reads that contaminated the human T-ALL sample.
+Firstly, raw FASTQs are demultiplexed into single-cell files, then reads 3'-end are trimmed as per the original [VASA-seq workflow](https://github.com/hemberg-lab/VASAseq_2022/tree/main/I_Gene_expression/a_Mapping). The depletion of ribosomal RNA is performed by mapping reads to a reference FASTA file containing both mouse and human rRNA genes \(`rRNA_ref/rRNA_human_mouse.fa`\). The last step consists in discarding mouse reads that contaminated the human T-ALL sample.
 
 ### Installation 
 Move to your working directory and clone this repository (change the part between angle brackets):
