@@ -30,8 +30,15 @@ conda env create -f envs/pre_process.yaml -p </path/to/conda/>pre_process
 conda activate pre_process
 ```
 ### Execution
-Before running the pipeline edit `profile/variables.yaml`. This file allows the user to specify the inputs for the pipeline. Each parameter provides a thorough explanation of their purpose. Moreover, `profile/config.yaml` contains parameters specific to Snakemake and how job submission to the cluster is handled.  
+Before running the pipeline edit `profile/variables.yaml`. This file allows the user to specify the inputs for the pipeline. Each parameter provides a thorough explanation of its purpose. Moreover, `profile/config.yaml` contains parameters specific to Snakemake and how job submission to the cluster is handled.  
 
+> [!IMPORTANT]
+> The ribo-depletion step requires indexing the concatenated human-mouse (hg38+mm38) genome. To build the index, execute `scripts/BBsplit.sh` manually (`BBMap` module required).
+
+Then run:
+```shell
+snakemake --profile profile/ filtering_cleaned
+```
 
 ## II. Transcriptome extension
 
