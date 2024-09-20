@@ -46,7 +46,7 @@ path_to_plates: "/g/korbel/Costea/Computational/VASAseq_data/TAL1_TALL/All_sampl
 
 #### Set the path of your working directory. ####
 #### Shoulb be the same directory containing the Snakefile. ####
-working_dir: "/g/korbel/zafferani/github_try"
+working_dir: "/g/korbel/zafferani/github_try/pre_process"
 
 
 #### Define the paths to the following softwares. ####
@@ -67,7 +67,7 @@ hs_mm_ribo: "rRNA_ref/rRNA_human_mouse.fa"
 
 #### Path to the indexed concatenated genome of human and mouse. ####
 #### build indexed genome via scripts/build_genome.sh if needed. ####
-ref_path: "/g/korbel/zafferani/pre_process"
+ref_path: "/g/korbel/zafferani/github_try/pre_process"
 
 
 #### In case you already clustered the cells with Seurat, it is possible to feed this object ####
