@@ -18,8 +18,10 @@ Move to your working directory and clone this repository (change the part betwee
 
 ```shell
 git clone https://github.com/Zaffe24/AS_VASAseq_sc_pipeline.git
-cd pre_process/ #move the pre_processing subfolder
+cd pre_process/ # move to the subfolder for this first module
 ```
+> [!NOTE]
+> Run the pipeline from the `pre_process` subfolder and set it as your working directory in `profile/variables.yaml`.
 
 Then create a conda environment named `pre_process` using as template `pre_process.yaml`:
 
@@ -28,7 +30,7 @@ conda env create -f envs/pre_process.yaml -p </path/to/conda/>pre_process
 conda activate pre_process
 ```
 ### Execution
-Before running the pipeline
+Before running the pipeline edit `profile/variables.yaml`. This file allows the user to specify the inputs for the pipeline. Each parameter provides a thorough explanation of their purpose. Moreover, `profile/config.yaml` contains parameters specific to Snakemake and how job submission to the cluster is handled.  
 
 
 ## II. Transcriptome extension
