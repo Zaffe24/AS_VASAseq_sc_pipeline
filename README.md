@@ -17,8 +17,8 @@ Firstly, raw FASTQs are demultiplexed into single-cell files, then reads 3'-end 
 Move to your working directory and clone this repository (change the part between angle brackets):
 
 ```shell
-cd <path/to/working_directory>
 git clone https://github.com/Zaffe24/AS_VASAseq_sc_pipeline.git
+cd pre_process/ #move the pre_processing subfolder
 ```
 
 Then create a conda environment named `pre_process` using as template `pre_process.yaml`:
