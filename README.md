@@ -25,8 +25,10 @@ Then create a conda environment named `pre_process` using as template `pre_proce
 
 ```shell
 conda env create -f envs/pre_process.yaml -p </path/to/conda/>pre_process
+conda activate pre_process
 ```
-
+### Execution
+Before running the pipeline
 
 
 ## II. Transcriptome extension
