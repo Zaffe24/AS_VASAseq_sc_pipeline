@@ -1,3 +1,9 @@
+  ###########################################################################
+ #### Snakemake pipeline for the pre-processing of raw VASA-seq output ####
+#########################################################################
+# by Pietro Zafferani
+
+
 #### import all packages ####
 #### make sure that the pipeline is using the Python from the conda env ####
 
