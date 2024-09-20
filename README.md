@@ -14,17 +14,20 @@ The workflow is designed to be run **individually** for each patient/sample via 
 Firstly, raw FASTQs are demultiplexed into single-cell files, then reads 3'-end are trimmed as per the original [VASA-seq workflow](https://github.com/hemberg-lab/VASAseq_2022/tree/main/I_Gene_expression/a_Mapping). The depletion of ribosomal RNA is performed by mapping reads to a reference FASTA file containing both mouse and human rRNA genes \(`XXXX.fasta`\). The last step consists in discarding mouse reads that contaminated the human T-ALL sample.
 
 ### Installation 
-Create a conda environment named `pre_process` using as template `pre_process.yaml`:
+Move to your working directory and clone this repository (change the part between angle brackets):
 
 ```shell
-conda env create -f envs/pre_process.yaml -p path/to/conda/pre_process
+cd <path/to/working_directory>
+git clone https://github.com/Zaffe24/AS_VASAseq_sc_pipeline.git
 ```
-then move to your working directory and clone this repository:
+
+Then create a conda environment named `pre_process` using as template `pre_process.yaml`:
 
 ```shell
-cd path/to/working_directory
-git clone
+conda env create -f envs/pre_process.yaml -p </path/to/conda/>pre_process
 ```
+
+
 
 ## II. Transcriptome extension
 
