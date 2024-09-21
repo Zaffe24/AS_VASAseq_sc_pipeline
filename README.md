@@ -43,7 +43,7 @@ snakemake --profile profile/ filtering_cleaned
 - `logs/<patient_id>/` contains logs files for each job run on the cluster, organized by rule.
 - All the output files are stored in the `<patient_id>/cleaned` directory:
   - List of demultiplexed and mouse-depleted FASTQs.
-  - `units.tsv` contains the labels of all FASTQs generated (`sample` field) and their location (`fq1`)
+  - `units.tsv` contains the labels of all FASTQs generated (`sample` field) and their location (`fq1`). This and the following .tsv files will be needed for module [III](#iii-micro-exon-discovery) and [IV](#iv-as-event-quantification).
 ## II. Transcriptome extension
 
 ## III. Micro-exon discovery
