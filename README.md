@@ -39,11 +39,19 @@ Then run:
 ```shell
 snakemake --profile profile/ filtering_cleaned
 ```
+
 ### Output
-- `logs/<patient_id>/` contains logs files for each job run on the cluster, organized by rule.
+- `logs/<patient_id>/` contains log reports of each job run on the cluster, organized by rule.
 - All the output files are stored in the `<patient_id>/cleaned` directory:
   - List of demultiplexed and mouse-depleted FASTQs.
-  - `units.tsv` contains the labels of all FASTQs generated (`sample` field) and their location (`fq1`). This and the following .tsv files will be needed for module [III](#iii-micro-exon-discovery) and [IV](#iv-as-event-quantification).
+  - **`units.tsv`** contains the label prefix of all FASTQs generated (`sample` field) and their location (`fq1`). This and the following .tsv files will be needed for modules [III](#iii-micro-exon-discovery) and [IV](#iv-as-event-quantification).
+  - **`samples.tsv`** is also required for the following modules, it contains the label prefix of each FASTQ (`sample`) and the respective cluster of origin (`condition`).
+  - **`locals.tsv`** contains the path to each FASTQ (`path`), their label prefix (`sample`), and the cluster label to which that cell belongs (`cluster`).
+  - **`fractions.tsv`** contains the following order: label prefix for each FASTQ, Proportion of reads mapping to the mouse genome, and proportion of ambiguous reads (mapping to both human and mouse genomes).
+  - **`full_metadata.tsv`** merges the information relative to each FASTQ defined in the previous tables.
+  - **`Mouse_reads.png`** and **`Ambigous_reads.png`** show boxplots for the proportion of mouse and ambiguous reads in processed and discarded (if a Thr < 1 was set in `variables.yaml`) cells. 
+ 
+  
 ## II. Transcriptome extension
 
 ## III. Micro-exon discovery
