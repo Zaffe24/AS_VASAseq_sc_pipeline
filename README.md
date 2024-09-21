@@ -26,7 +26,7 @@ cd pre_process/ # move to the subfolder for this first module
 Then create a conda environment named `pre_process` using as template `pre_process.yaml`:
 
 ```shell
-conda env create -f envs/pre_process.yaml -p </path/to/conda/>pre_process
+conda env create -f envs/pre_process.yaml -p </path/to/conda>/pre_process
 conda activate pre_process
 ```
 ### Execution
@@ -43,7 +43,7 @@ snakemake --profile profile/ filtering_cleaned
 - `logs/<patient_id>/` contains logs files for each job run on the cluster, organized by rule.
 - All the output files are stored in the `<patient_id>/cleaned` directory:
   - List of demultiplexed and mouse-depleted FASTQs.
-  - `units.tsv`
+  - `units.tsv` contains the labels of all FASTQs generated (`sample` field) and their location (`fq1`)
 ## II. Transcriptome extension
 
 ## III. Micro-exon discovery
