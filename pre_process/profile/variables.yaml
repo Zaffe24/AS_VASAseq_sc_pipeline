@@ -52,8 +52,7 @@ working_dir: "/g/korbel/zafferani/github_try/pre_process"
 
 #### Define the paths to the following softwares. ####
 #### type "module avail" in your terminal to check if they are already installed on your system. ####
-#### Note the "bin" suffix for some of them. ####
-#### Note also that Trim_Galore and cutadapt need to have both  the GCCcore-10.3.0 version to work ####
+#### Note that the subfolder "bin" must be appended to the path for some of them. ####
 trimal: "/g/easybuild/x86_64/Rocky/8/haswell/software/Trim_Galore/0.6.7-GCCcore-10.3.0/bin"
 cutadapt: "/g/easybuild/x86_64/Rocky/8/haswell/software/cutadapt/3.4-GCCcore-10.3.0/bin"
 bwa: "/g/easybuild/x86_64/Rocky/8/haswell/software/BWA/0.7.17-GCCcore-11.2.0/bin"
