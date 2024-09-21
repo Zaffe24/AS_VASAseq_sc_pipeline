@@ -42,7 +42,8 @@ snakemake --profile profile/ filtering_cleaned
 ### Output
 - `logs/<patient_id>/` contains logs files for each job run on the cluster, organized by rule.
 - All the output files are stored in the `<patient_id>/cleaned` directory:
-  - demultiplxed 
+  - List of demultiplexed and mouse-depleted FASTQs.
+  - `units.tsv`
 ## II. Transcriptome extension
 
 ## III. Micro-exon discovery
