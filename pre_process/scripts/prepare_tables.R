@@ -90,7 +90,7 @@ if (as.character(label) == 'barcode'){
                                            lapply(fracs$cell_id, function(x) unlist(strsplit(x,'_'))[c(1)])),lapply(fracs$cell_id,function(x) unlist(strsplit(x,'_'))[3]))}
 
 
-fracs$fq1 <- paste0(file.path(path_cleaned_files,fracs$sample),'.fq.gz')
+fracs$fq1 <- paste0(file.path(out,fracs$sample),'.fq.gz')
 
 
 if (length(unlist(strsplit(fracs$cell_id[1],'_'))) != 3){
