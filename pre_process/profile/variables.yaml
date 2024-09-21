@@ -9,6 +9,7 @@
 
 
 #### Temporary directory for storing the considerable amount of intermediate files. ####
+#### Files stored in this directory will NOT be automatically deleted after the pipeline's completion. ####
 #### Set to your working directory if not interested in using a temporary directory. ####
 tmp: '/scratch/zafferani'
 
