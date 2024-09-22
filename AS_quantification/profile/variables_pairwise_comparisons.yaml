@@ -1,0 +1,76 @@
+################################################################################
+## yaml file to be defined in MicroExonator.smk when running pairwise comparison module
+##
+##
+## snakemake -s MicroExonator.smk --profile profile/ snakepool
+##
+##
+################################################################################
+Genome_fasta : /g/korbel/zafferani/genome_indexed/human_gn/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+GT_AG_U2_5 : /g/korbel/zafferani/MicroExonator/data/GT_AG_U2_5.pwm
+GT_AG_U2_3 : /g/korbel/zafferani/MicroExonator/data/GT_AG_U2_3.pwm
+conservation_bigwig : NA
+working_directory : /g/korbel/zafferani/MicroExonator/
+ME_DB : /g/korbel/zafferani/MicroExonator/GRCh38_VastDb.tsv
+
+ME_len : 30 #maximum nt length of micro-exon
+Optimize_hard_drive : F
+min_number_files_detected : 2
+min_reads_PSI : 5
+max_read_len : 240
+min_conservation : 2
+skip_mixture_model_filter : T
+whippet_flags : --circ --stranded
+
+#n_pseudo_bulks : 200
+Keep_fastq_gz : T
+
+skip_discovery : T ####T
+skip_TE_TS : F
+
+## skip_genome_alignment : T
+
+# Whippet
+
+downstream_only : T ####T
+whippet_bin_folder : /g/korbel/zafferani/MicroExonator/Whippet.jl/bin
+#no need to chagne
+julia: /g/korbel/zafferani/MicroExonator/julia-1.6.7/bin/julia
+
+################## PATIENT SPECIFIC PATH ###############################
+#final extended reference
+Gene_anontation_GTF : /g/korbel/zafferani/MicroExonator/Report/out.high_quality_calibrated.gtf
+#######################################################################
+
+
+Only_whippet : T
+
+### Single cell  ###
+
+Only_snakepool : T
+
+
+cluster_name : cluster
+file_basename : sample
+
+Get_Bamfiles : T
+
+
+################## CHANGE ACCORDING TO YOUR DATA #####################
+cluster_metadata : /g/korbel/zafferani/MicroExonator/local_samples.tsv
+run_metadata : /g/korbel/zafferani/MicroExonator/P7/run_metadata.tsv
+###########################################################
+ 
+
+#Get_Bamfiles : T
+Single_Cell : T
+cluster_sashimi : F
+min_number_of_reads_single_cell : 5
+min_number_of_samples_single_cell : 2
+
+
+cdf_t : 0.8
+min_rep : 25
+min_p_mean : 0.9
+min_delta : 0.2
+snakepool_seed : 123
