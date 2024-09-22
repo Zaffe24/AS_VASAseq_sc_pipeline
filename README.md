@@ -151,7 +151,7 @@ snakemake -s MicroExonator.smk --profile profile/ quant_unpool_single_cell
 ```
 
 #### Output
-This will generate for each cell a .tsv file with PSI values for each splicing node stored in **`Whippet/Quant/Single_Cell/Unpooled`**.
+For each cell, a .tsv file with PSI values for all splicing nodes will be generated and stored in **`Whippet/Quant/Single_Cell/Unpooled`**.
 
 > [!TIP]
 > Again, after completion of this module we suggest moving all the output files to a patient/sample-labeled subfolder.
