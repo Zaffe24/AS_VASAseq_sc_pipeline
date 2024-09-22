@@ -1,0 +1,78 @@
+#
+######################### RUN DISCOVERY MODULE ###############################
+# snakemake -s MicroExonator.smk --profile profile/ Report/out.high_quality.txt
+#
+
+
+Genome_fasta : /g/korbel/zafferani/genome_indexed/human_gn/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+GT_AG_U2_5 : NA #/g/korbel/zafferani/MicroExonator/data/GT_AG_U2_5.pwm
+GT_AG_U2_3 : NA #/g/korbel/zafferani/MicroExonator/data/GT_AG_U2_3.pwm
+conservation_bigwig : NA
+working_directory : /g/korbel/zafferani/MicroExonator/
+### included in our GitHub repo ####
+ME_DB : /g/korbel/zafferani/MicroExonator/GRCh38_VastDb.tsv
+
+ME_len : 30 #maximum nt length of micro-exon
+Optimize_hard_drive : F
+min_number_files_detected : 2
+min_reads_PSI : 3
+max_read_len : 240
+min_conservation : 2
+skip_mixture_model_filter : T
+
+skip_discovery : F
+
+
+
+## skip_genome_alignment : T
+
+# Whippet
+
+downstream_only : F
+whippet_bin_folder : /g/korbel/zafferani/RNA_seq_snakepipes/Whippet/share/julia/site/v0.6/Whippet/bin/
+julia : /g/easybuild/x86_64/Rocky/8/haswell/software/Julia/1.8.0-linux-x86_64/bin/julia
+
+################## PATIENT SPECIFIC PATH ###############################
+
+#######################################################################
+
+Gene_anontation_bed12 : /g/korbel/zafferani/genome_indexed/human_gn/GRCh38_v44.bed12
+
+Only_whippet : F
+
+### Single cell  ###
+
+Only_snakepool : F
+#GTF : /lustre/scratch117/cellgen/team218/gp7/Micro-exons/Software/Micro-Exonator_Final/Whippet/out_filtered_ME.no_chrM.gtf
+#whippet_bin_folder : /lustre/scratch117/cellgen/team218/gp7/miniconda/envs/julia/share/julia/site/v0.6/Whippet/bin
+#samtools : /lustre/scratch117/cellgen/team218/gp7/miniconda/envs/g4/bin/samtools
+#cluster_metadata : /lustre/scratch117/cellgen/team218/gp7/Joe/MicroExonator/RNA_seq_pipes.samples.tsv
+
+
+cluster_name : condition
+file_basename : sample
+
+################## PATIENT SPECIFIC PATH ###################
+######## #############IMPORTANT TIP ########################
+# THESE FILES SHOULS BE IN THE SAME DIRECTORY AS MicroExonator.smk,
+# otherwise they are not seen by the pipeline
+cluster_metadata : /g/korbel/zafferani/MicroExonator/P7/cluster_annotation.pools.tsv
+run_metadata : /g/korbel/zafferani/MicroExonator/P7/run_metadata.tsv
+
+Gene_anontation_GTF : /g/korbel/zafferani/RNA_seq_snakepipes/P7/gffcompare/extended_ref_annotation.gtf
+###########################################################
+ 
+
+#Get_Bamfiles : T
+Single_Cell : T
+cluster_sashimi : F
+min_number_of_reads_single_cell : 5
+min_number_of_samples_single_cell : 2
+
+
+
+cdf_t : 0.8
+min_rep : 25
+min_p_mean : 0.9
+min_delta : 0.2
+snakepool_seed : 123
