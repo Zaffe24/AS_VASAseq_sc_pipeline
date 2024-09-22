@@ -53,6 +53,20 @@ snakemake --profile profile/ filtering_cleaned
  
   
 ## II. Transcriptome extension
+This module allows the user to extend the (human) genome annotation file (GTF) with novel transcripts inferred directly from the patient/sample data. The single-cell FASTQs are collapsed into pseudo-bulks corresponding to the cell clusters previously defined, and novel transcript annotations are generated for each one of them. The newly annotated transcripts are then appended to the original GTF file that will be used to quantify AS events. For this step, we relied on the pipeline from the original VASA-seq publication.
+
+### Installation
+For the installation of this module, please refer to the [original documentation](https://github.com/hemberg-lab/VASAseq_2022/tree/main/II_Alternative_splicing/a_Transcriptome_assembly).
+
+> [!NOTE]
+> To avoid confusion between Snakemake configuration files, we suggest installing this pipeline in a different directory.
+
+We ran the pipeline from a dedicated conda environment whose template can be found in [`transcriptome_extension/`](tran scriptome_extension/):
+
+```bash
+conda env create -f transcriptome_extension/module_2.yaml -p </path/to/conda>/module_2.yaml
+
+```
 
 ## III. Micro-exon discovery
 
