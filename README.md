@@ -98,11 +98,28 @@ conda activate module_3
 
 ### Execution
 This and the following modules, rely on the Snakemake pipeline `MicroExonator`. For further information about the inputs required and the rationale behind the workflow, consult the original [MicroExonator page](https://microexonator.readthedocs.io/en/latest/index.html).
+We provide our customized configuration files for Snakemake in [microexon_discovery/profile](microexon_discovery/profile).
 
 To run this module with our specifics, set the following parameter in the header of `MicroExonator.smk`:
 ```python
-## header
-configfile: "profile/variables_discovery.yaml"
+## header of MicroExonator.smk
+configfile : "profile/variables_discovery.yaml"
 ```
+then:
+```bash
+snakemake -s MicroExonator.smk --profile profile/ Report/out.high_quality.txt
+````
+### Output
+`Report/out.high_quality.txt` lists all the high-quality micro-exons discovered. To append their annotations to the GTF file obtained in the previous module we ran the following script:
+```bash
+microexon_discovery/add_ME_to_ref.sh "Report/out.high_quality.txt" "</path/module2/patient_id>/gffcompare/extended_ref_annotation.gtf" "Homo_sapiens.GRCh38.dna.primary_assembly.fa"
+# arg_1 : ouput from module III
+# arg 2 : output from module II
+# arg 3 : human genome FASTA file
+```
+This will generate **`Report/out.high_quality_calibrated.gtf`**, the final GTF file incorporating both the annotation of novel transcripts and microexons.
 
+>[!TIP]
+>The pipeline will generate all output folders in the current working directory. To avoid the risk of over-writing them when re-running the pipeline on a different patient, we suggest to move the outputs to patient-labelled subfolders after completion.
+>
 ## IV. AS event quantification
