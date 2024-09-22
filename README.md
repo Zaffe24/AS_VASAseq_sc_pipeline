@@ -1,4 +1,4 @@
-# Alternative Splicing pipeline for VASA-seq
+# Alternative Splicing analysis for VASA-seq
 Repository describing the computational workflow employed for the single-cell Alternative Splicing (AS) analysis from [Costea et al., 2024](https://doi.org/10.1101/2024.06.24.600391)
 
 ## Overview
@@ -10,7 +10,7 @@ Patient-derived xenograft (PDX) samples from pediatric T-cell acute lymphoblasti
 - [IV. AS event quantification](#iv-as-event-quantification)
 
 ## I. Pre-processing
-The workflow is designed to be run **individually** for each patient/sample via a customized `Snakemake` pipeline.
+This `snakemake` pipeline is designed to be run **individually** for each patient/sample.
 Firstly, raw FASTQs are demultiplexed into single-cell files, then reads 3'-end are trimmed as per the original [VASA-seq workflow](https://github.com/hemberg-lab/VASAseq_2022/tree/main/I_Gene_expression/a_Mapping). The depletion of ribosomal RNA is performed by mapping reads to a reference FASTA file containing both mouse and human rRNA genes \(`rRNA_ref/rRNA_human_mouse.fa`\). The last step consists in discarding mouse reads that contaminated the human T-ALL sample.
 
 ### Installation 
