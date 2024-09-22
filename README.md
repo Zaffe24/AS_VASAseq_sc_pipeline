@@ -81,7 +81,7 @@ snakemake --profile profile/ <patient_id>/gffcompare/extended_ref_annotation.gtf
 ```
 
 ### Output
-The only relevant output for the next steps is the original GTF file expanded with novel trasncript annotations: `<patient_id>/gffcompare/extended_ref_annotation.gtf`.
+The only relevant output for the next steps is the original GTF file expanded with novel transcript annotations: `<patient_id>/gffcompare/extended_ref_annotation.gtf`.
 
 
 ## III. Micro-exon discovery
