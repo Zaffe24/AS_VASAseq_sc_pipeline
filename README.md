@@ -120,6 +120,38 @@ microexon_discovery/add_ME_to_ref.sh "Report/out.high_quality.txt" "</path/modul
 This will generate **`Report/out.high_quality_calibrated.gtf`**, the final GTF file incorporating both the annotation of novel transcripts and microexons.
 
 >[!TIP]
->The pipeline will generate all output folders in the current working directory. To avoid the risk of over-writing them when re-running the pipeline on a different patient, we suggest to move the outputs to patient-labelled subfolders after completion.
+>The pipeline will generate all output folders in the current working directory. To avoid the risk of overwriting them when re-running the pipeline on a different patient, we suggest moving the outputs to patient-labeled subfolders after completion.
 >
 ## IV. AS event quantification
+In this step, we perform pairwise comparisons across cell pseudo-bulks to compute the list of AS events statistically significant. Moreover, we can compute the percentage-spliced-in (PSI) value for each splicing node at the single-cell level. For further information regarding these outputs, consult the original [pipeline repository](https://github.com/hemberg-lab/VASAseq_2022/tree/main/II_Alternative_splicing/c_AS_quantification).
+
+### Pairwise comparisons
+Similarly to the previous module, we defined [`variables_pairwise_comparisons.yaml`](AS_quantification/profile/) as config file for `MicroExonator.smk`:
+```python
+## MicroExonator.smk header
+configfile : "profile/variables_pairwise_comparisons.yaml"
+```
+Having activated the conda environment from the previous module, run the following code:
+```shell
+snakemake -s MicroExonator.smk --profile profile/ snakepool
+```
+#### Output
+As output, a .tsv file for each pairwise comparison will be generated in the subfolder **`Whippet/Delta/Single_Cell/Single_nodes/`**. These tables contain information for all AS events detected, regardless if they are statistically significant or not.
+
+### Single-cell PSI
+To compute PSI values at the single-cell level instead, define [`variables_psi_matrix.yaml`](AS_quantification/profile/) as config file for  `MicroExonator.smk`:
+```python
+## MicroExonator.smk header
+configfile : "profile/variables_psi_matrix.yaml"
+```
+
+Within the same conda environment, run the following code:
+```shell
+snakemake -s MicroExonator.smk --profile profile/ quant_unpool_single_cell
+```
+
+#### Output
+This will generate for each cell a .tsv file with PSI values for each splicing node stored in **`Whippet/Quant/Single_Cell/Unpooled`**.
+
+> [!TIP]
+> Again, after completion of this module we suggest moving all the output files to a patient/sample-labeled subfolder.
