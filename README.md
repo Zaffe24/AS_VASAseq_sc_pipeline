@@ -53,21 +53,29 @@ snakemake --profile profile/ filtering_cleaned
  
   
 ## II. Transcriptome extension
-This module allows the user to extend the (human) genome annotation file (GTF) with novel transcripts inferred directly from the patient/sample data. The single-cell FASTQs are collapsed into pseudo-bulks corresponding to the cell clusters previously defined, and novel transcript annotations are generated for each one of them. The newly annotated transcripts are then appended to the original GTF file that will be used to quantify AS events. For this step, we relied on the pipeline from the original VASA-seq publication.
+This module allows the user to extend the (human) genome annotation file (GTF) with novel transcripts inferred directly from the patient/sample data. The single-cell FASTQs are collapsed into pseudo-bulks corresponding to the cell clusters previously defined, and novel transcript annotations are generated for each one of them. The newly annotated transcripts are then appended to the original GTF file that will be used to quantify AS events. For this step, we relied on the pipeline from the original [VASA-seq publication](https://www.nature.com/articles/s41587-022-01361-8).
 
 ### Installation
 For the installation of this module, please refer to the [original documentation](https://github.com/hemberg-lab/VASAseq_2022/tree/main/II_Alternative_splicing/a_Transcriptome_assembly).
 
 > [!NOTE]
-> To avoid confusion between Snakemake configuration files, we suggest installing this pipeline in a different directory.
+> To avoid confusion between Snakemake configuration files, we suggest creating a directory specific to this module.
 
-We ran the pipeline from a dedicated conda environment whose template can be found in [`transcriptome_extension/`](tran scriptome_extension/):
+We ran the pipeline from a dedicated conda environment whose template can be found in [`transcriptome_extension/`](transcriptome_extension/):
 
 ```bash
 conda env create -f transcriptome_extension/module_2.yaml -p </path/to/conda>/module_2.yaml
-
+conda activate module_2
 ```
 
+### Execution
+As before, the parameters in `variables.yaml` and `config.yaml` should be defined according to the user specifics. Our customized templates can be found [here](transcriptome_extension/profile/), otherwise the templates from the original [GitHub repository](https://github.com/hemberg-lab/VASAseq_2022/tree/main/II_Alternative_splicing/a_Transcriptome_assembly/Build) work fine.
+
+To run the pipeline:
+
+```bash
+
+```
 ## III. Micro-exon discovery
 
 ## IV. AS event quantification
