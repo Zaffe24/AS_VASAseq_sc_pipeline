@@ -44,7 +44,7 @@ snakemake --profile profile/ filtering_cleaned
 - `logs/<patient_id>/` contains log reports of each job run on the cluster, organized by rule.
 - All the output files are stored in the `<patient_id>/cleaned` directory:
   - List of demultiplexed and mouse-depleted FASTQs.
-  - **`units.tsv`** contains the label prefix of all FASTQs generated (`sample` field) and their location (`fq1`). This and the following .tsv files will be needed for modules [III](#iii-micro-exon-discovery) and [IV](#iv-as-event-quantification).
+  - **`units.tsv`** contains the label prefix of all FASTQs generated (`sample` field) and their location (`fq1`). This and the following .tsv files will be needed for modules [II](#ii-transcriptome-extension), [III](#iii-micro-exon-discovery) and [IV](#iv-as-event-quantification).
   - **`samples.tsv`** is also required for the following modules, it contains the label prefix of each FASTQ (`sample`) and the respective cluster of origin (`condition`).
   - **`locals.tsv`** contains the path to each FASTQ (`path`), their label prefix (`sample`), and the cluster label to which that cell belongs (`cluster`).
   - **`fractions.tsv`** contains the following order: label prefix for each FASTQ, Proportion of reads mapping to the mouse genome, and proportion of ambiguous reads (mapping to both human and mouse genomes).
@@ -55,7 +55,7 @@ snakemake --profile profile/ filtering_cleaned
 ## II. Transcriptome extension
 This module allows the user to extend the (human) genome annotation file (GTF) with novel transcripts inferred directly from the patient/sample data. The single-cell FASTQs are collapsed into pseudo-bulks corresponding to the cell clusters previously defined, and novel transcript annotations are generated for each one of them. The newly annotated transcripts are then appended to the original GTF file that will be used to quantify AS events. For this step, we relied on the pipeline from the original [VASA-seq publication](https://www.nature.com/articles/s41587-022-01361-8).
 
-### Installation
+### Set-up
 For the installation of this module, please refer to the [original documentation](https://github.com/hemberg-lab/VASAseq_2022/tree/main/II_Alternative_splicing/a_Transcriptome_assembly).
 
 > [!NOTE]
@@ -85,5 +85,24 @@ The only relevant output for the next steps is the original GTF file expanded wi
 
 
 ## III. Micro-exon discovery
+This step allows the user to further expand the transcriptome annotation by inferring novel micro-exons (length < 30nt) directly from the data.
+
+### Set-up
+We suggest consulting the [original documentation](https://github.com/hemberg-lab/VASAseq_2022/tree/main/II_Alternative_splicing/b_Microexon_annotation) for further information about this step.
+We created another dedicated conda environment:
+
+```shell
+conda env create -f microexon_discovery/module_3.yaml -p </path/to/conda>/module_3
+conda activate module_3
+```
+
+### Execution
+This and the following modules, rely on the Snakemake pipeline `MicroExonator`. For further information about the inputs required and the rationale behind the workflow, consult the original [MicroExonator page](https://microexonator.readthedocs.io/en/latest/index.html).
+
+To run this module with our specifics, set the following parameter in the header of `MicroExonator.smk`:
+```python
+## header
+configfile: "profile/variables_discovery.yaml"
+```
 
 ## IV. AS event quantification
