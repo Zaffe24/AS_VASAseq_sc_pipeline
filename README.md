@@ -71,11 +71,19 @@ conda activate module_2
 ### Execution
 As before, the parameters in `variables.yaml` and `config.yaml` should be defined according to the user specifics. Our customized templates can be found [here](transcriptome_extension/profile/), otherwise the templates from the original [GitHub repository](https://github.com/hemberg-lab/VASAseq_2022/tree/main/II_Alternative_splicing/a_Transcriptome_assembly/Build) work fine.
 
+> [!IMPORTANT]
+> We adapted the original `Snakefile` to satisfy our requirements. Replace the original with [`transcriptome_extension/Snakefile`](transcriptome_extension/Snakefile) in your working directory.
+
 To run the pipeline:
 
 ```bash
-
+snakemake --profile profile/ <patient_id>/gffcompare/extended_ref_annotation.gtf
 ```
+
+### Output
+The only relevant output for the next steps is the original GTF file expanded with novel trasncript annotations: `<patient_id>/gffcompare/extended_ref_annotation.gtf`.
+
+
 ## III. Micro-exon discovery
 
 ## IV. AS event quantification
