@@ -1,4 +1,6 @@
 # Alternative Splicing analysis for VASA-seq
+[![DOI](https://zenodo.org/badge/858894959.svg)](https://doi.org/10.5281/zenodo.15512142)
+
 Repository describing the computational workflow employed for the single-cell Alternative Splicing (AS) analysis from [Costea et al., 2024](https://doi.org/10.1101/2024.06.24.600391).
 
 The raw data can be accessed at [**EGAD50000000831**](https://ega-archive.org/studies/EGAS50000000582).
